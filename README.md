@@ -1,2 +1,2 @@
 # airlinemanagement
-Project trainning ADO .NET, entity
+Project trainning ADO .NET, entity, linq
