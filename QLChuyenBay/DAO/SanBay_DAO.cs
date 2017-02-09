@@ -40,9 +40,9 @@ namespace QLChuyenBay.DAO
         {
             SqlConnection Conn = new SqlConnection(chuoi_ket_noi);
             Conn.Open();
-            string select_cmd = "SELECT MaSB, TenSB FROM SANBAY";
-            SqlDataAdapter da = new SqlDataAdapter(select_cmd, Conn);
-            if (da.Update(dt) > 0)
+            SqlCommand select_cmd = new SqlCommand("SELECT MaSB, TenSB FROM SANBAY", Conn);
+            SqlDataAdapter da = new SqlDataAdapter(select_cmd);
+            if (da.Update(dt.Select(null, null, DataViewRowState.Deleted)) > 0 && da.Update(dt.Select(null, null, DataViewRowState.ModifiedCurrent)) > 0 && da.Update(dt.Select(null, null, DataViewRowState.Added)) > 0)
                 return true;
             else
                 return false;
