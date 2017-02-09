@@ -50,11 +50,11 @@
     <Compile Include="BUS\AddFlight_BUS.cs" />
     <Compile Include="DAO\ChuyenBay_DAO.cs" />
     <Compile Include="DAO\SanBay_DAO.cs" />
-    <Compile Include="GUI\AddFlight.cs">
+    <Compile Include="GUI\Flight.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\AddFlight.Designer.cs">
-      <DependentUpon>AddFlight.cs</DependentUpon>
+    <Compile Include="GUI\Flight.Designer.cs">
+      <DependentUpon>Flight.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Form1.cs">
       <SubType>Form</SubType>
@@ -62,22 +62,22 @@
     <Compile Include="GUI\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\QLSanBay.cs">
+    <Compile Include="GUI\Airport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\QLSanBay.Designer.cs">
-      <DependentUpon>QLSanBay.cs</DependentUpon>
+    <Compile Include="GUI\Airport.Designer.cs">
+      <DependentUpon>Airport.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GUI\AddFlight.resx">
-      <DependentUpon>AddFlight.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Flight.resx">
+      <DependentUpon>Flight.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QLSanBay.resx">
-      <DependentUpon>QLSanBay.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Airport.resx">
+      <DependentUpon>Airport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

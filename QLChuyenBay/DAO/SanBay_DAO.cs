@@ -42,10 +42,20 @@ namespace QLChuyenBay.DAO
             Conn.Open();
             SqlCommand select_cmd = new SqlCommand("SELECT MaSB, TenSB FROM SANBAY", Conn);
             SqlDataAdapter da = new SqlDataAdapter(select_cmd);
-            if (da.Update(dt.Select(null, null, DataViewRowState.Deleted)) > 0 && da.Update(dt.Select(null, null, DataViewRowState.ModifiedCurrent)) > 0 && da.Update(dt.Select(null, null, DataViewRowState.Added)) > 0)
+            SqlCommandBuilder cb = new SqlCommandBuilder(da);
+            int num_row_update = 0;
+            da.UpdateCommand = cb.GetUpdateCommand();
+            num_row_update += da.Update(dt.Select(null, null, DataViewRowState.Deleted));
+            num_row_update += da.Update(dt.Select(null, null, DataViewRowState.ModifiedCurrent));
+            num_row_update += da.Update(dt.Select(null, null, DataViewRowState.Added));
+            if (num_row_update > 0)
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
     }
 }

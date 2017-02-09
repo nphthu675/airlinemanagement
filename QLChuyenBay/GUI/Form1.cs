@@ -20,13 +20,13 @@ namespace QLChuyenBay
 
         private void BT_ThemSanBay_Click(object sender, EventArgs e)
         {
-            QLSanBay add_ariport_gui = new QLSanBay();
+            Airport add_ariport_gui = new Airport();
             add_ariport_gui.ShowDialog();
         }
 
         private void BT_ThemChuyenBay_Click(object sender, EventArgs e)
         {
-            AddFlight add_flight_gui = new AddFlight();
+            Flight add_flight_gui = new Flight();
             add_flight_gui.ShowDialog();
         }
     }

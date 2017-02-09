@@ -1,6 +1,6 @@
 ﻿namespace QLChuyenBay.GUI
 {
-    partial class QLSanBay
+    partial class Airport
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.DGV_Airport = new System.Windows.Forms.DataGridView();
             this.BT_Save = new System.Windows.Forms.Button();
-            this.BT_Delete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Airport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,6 +46,7 @@
             this.BT_Add.TabIndex = 9;
             this.BT_Add.Text = "Add";
             this.BT_Add.UseVisualStyleBackColor = true;
+            this.BT_Add.Click += new System.EventHandler(this.BT_Add_Click_1);
             // 
             // label2
             // 
@@ -87,6 +87,8 @@
             this.DGV_Airport.Name = "DGV_Airport";
             this.DGV_Airport.Size = new System.Drawing.Size(421, 217);
             this.DGV_Airport.TabIndex = 10;
+            this.DGV_Airport.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_Airport_CellMouseClick);
+            this.DGV_Airport.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DGV_Airport_KeyDown);
             // 
             // BT_Save
             // 
@@ -98,21 +100,11 @@
             this.BT_Save.UseVisualStyleBackColor = true;
             this.BT_Save.Click += new System.EventHandler(this.BT_Save_Click);
             // 
-            // BT_Delete
-            // 
-            this.BT_Delete.Location = new System.Drawing.Point(275, 326);
-            this.BT_Delete.Name = "BT_Delete";
-            this.BT_Delete.Size = new System.Drawing.Size(75, 23);
-            this.BT_Delete.TabIndex = 12;
-            this.BT_Delete.Text = "Delete";
-            this.BT_Delete.UseVisualStyleBackColor = true;
-            // 
             // QLSanBay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(444, 356);
-            this.Controls.Add(this.BT_Delete);
             this.Controls.Add(this.BT_Save);
             this.Controls.Add(this.DGV_Airport);
             this.Controls.Add(this.BT_Add);
@@ -138,6 +130,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView DGV_Airport;
         private System.Windows.Forms.Button BT_Save;
-        private System.Windows.Forms.Button BT_Delete;
     }
 }

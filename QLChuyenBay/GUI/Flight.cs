@@ -11,24 +11,12 @@ using System.Windows.Forms;
 
 namespace QLChuyenBay.GUI
 {
-    public partial class AddFlight : Form
+    public partial class Flight : Form
     {
         AddFlight_BUS BUS_Obj = new AddFlight_BUS();
-        public AddFlight()
+        public Flight()
         {
             InitializeComponent();
-        }
-
-        private void AddFlight_Load(object sender, EventArgs e)
-        {
-            DataTable dt = BUS_Obj.Get_List_Airport();
-            DataTable dt1 = BUS_Obj.Get_List_Airport();
-            CB_To.DataSource = dt;
-            CB_To.DisplayMember = dt.Columns["TenSB"].ToString();
-            CB_To.ValueMember = dt.Columns["MaSB"].ToString();
-            CB_From.DataSource = dt1;
-            CB_From.DisplayMember = dt1.Columns["TenSB"].ToString();
-            CB_From.ValueMember = dt1.Columns["MaSB"].ToString();
         }
 
         private void BT_Add_Click(object sender, EventArgs e)
@@ -61,6 +49,31 @@ namespace QLChuyenBay.GUI
                 MessageBox.Show("Not time value!", "Error");
                 TXT_Time.BackColor = Color.Red;
             }
+        }
+
+        private void Flight_Load(object sender, EventArgs e)
+        {
+            LoadCombobox();
+            LoadGridview();
+        }
+
+        private void LoadCombobox()
+        {
+            DataTable dt = BUS_Obj.Get_List_Airport();
+            DataTable dt1 = BUS_Obj.Get_List_Airport();
+            CB_To.DataSource = dt;
+            CB_To.DisplayMember = dt.Columns["TenSB"].ToString();
+            CB_To.ValueMember = dt.Columns["MaSB"].ToString();
+            CB_From.DataSource = dt1;
+            CB_From.DisplayMember = dt1.Columns["TenSB"].ToString();
+            CB_From.ValueMember = dt1.Columns["MaSB"].ToString();
+        }
+        private void LoadGridview()
+        {
+            DataTable dt = BUS_Obj.LoadAllFlight();
+            BindingSource bs = new BindingSource();
+            bs.DataSource = dt;
+            DGVFlight.DataSource = bs;
         }
     }
 }

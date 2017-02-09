@@ -23,5 +23,15 @@ namespace QLChuyenBay.BUS
             date = date.Date.AddHours(time.TotalHours);
             return Flight_DAO_Obj.AddFlight(id_from, id_to, date);
         }
+
+        public DataTable LoadAllFlight()
+        {
+            return Flight_DAO_Obj.LoadAllFlight();
+        }
+
+        public bool UpdateFlight( DataTable dt)
+        {
+            return Airport_DAO_Obj.Update_Airport(dt);
+        }
     }
 }
