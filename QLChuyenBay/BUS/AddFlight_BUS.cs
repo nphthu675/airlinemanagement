@@ -31,7 +31,12 @@ namespace QLChuyenBay.BUS
 
         public bool UpdateFlight( DataTable dt)
         {
-            return Airport_DAO_Obj.Update_Airport(dt);
+            return Flight_DAO_Obj.Update_Flight(dt);
+        }
+
+        public DataTable SearchFlight(string to, string from, DateTime date)
+        {
+            return Flight_DAO_Obj.SearchFlight(from, to, date.Date.ToString());
         }
     }
 }

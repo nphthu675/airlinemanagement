@@ -38,13 +38,14 @@
             this.CB_To = new System.Windows.Forms.ComboBox();
             this.CB_From = new System.Windows.Forms.ComboBox();
             this.DGVFlight = new System.Windows.Forms.DataGridView();
-            this.BTSave = new System.Windows.Forms.Button();
+            this.BTSaveEdit = new System.Windows.Forms.Button();
+            this.SaveBT = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVFlight)).BeginInit();
             this.SuspendLayout();
             // 
             // BT_Add
             // 
-            this.BT_Add.Location = new System.Drawing.Point(435, 66);
+            this.BT_Add.Location = new System.Drawing.Point(310, 66);
             this.BT_Add.Name = "BT_Add";
             this.BT_Add.Size = new System.Drawing.Size(75, 23);
             this.BT_Add.TabIndex = 17;
@@ -125,22 +126,36 @@
             this.DGVFlight.Name = "DGVFlight";
             this.DGVFlight.Size = new System.Drawing.Size(496, 217);
             this.DGVFlight.TabIndex = 18;
+            this.DGVFlight.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVFlight_CellClick);
+            this.DGVFlight.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DGVFlight_KeyDown);
             // 
-            // BTSave
+            // BTSaveEdit
             // 
-            this.BTSave.Location = new System.Drawing.Point(435, 316);
-            this.BTSave.Name = "BTSave";
-            this.BTSave.Size = new System.Drawing.Size(75, 23);
-            this.BTSave.TabIndex = 19;
-            this.BTSave.Text = "Save";
-            this.BTSave.UseVisualStyleBackColor = true;
+            this.BTSaveEdit.Location = new System.Drawing.Point(391, 66);
+            this.BTSaveEdit.Name = "BTSaveEdit";
+            this.BTSaveEdit.Size = new System.Drawing.Size(117, 23);
+            this.BTSaveEdit.TabIndex = 19;
+            this.BTSaveEdit.Text = "Save Editted";
+            this.BTSaveEdit.UseVisualStyleBackColor = true;
+            this.BTSaveEdit.Click += new System.EventHandler(this.BTSave_Click);
+            // 
+            // SaveBT
+            // 
+            this.SaveBT.Location = new System.Drawing.Point(433, 316);
+            this.SaveBT.Name = "SaveBT";
+            this.SaveBT.Size = new System.Drawing.Size(75, 23);
+            this.SaveBT.TabIndex = 20;
+            this.SaveBT.Text = "Save";
+            this.SaveBT.UseVisualStyleBackColor = true;
+            this.SaveBT.Click += new System.EventHandler(this.SaveBT_Click);
             // 
             // Flight
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(520, 348);
-            this.Controls.Add(this.BTSave);
+            this.Controls.Add(this.SaveBT);
+            this.Controls.Add(this.BTSaveEdit);
             this.Controls.Add(this.DGVFlight);
             this.Controls.Add(this.BT_Add);
             this.Controls.Add(this.label4);
@@ -172,6 +187,7 @@
         private System.Windows.Forms.ComboBox CB_To;
         private System.Windows.Forms.ComboBox CB_From;
         private System.Windows.Forms.DataGridView DGVFlight;
-        private System.Windows.Forms.Button BTSave;
+        private System.Windows.Forms.Button BTSaveEdit;
+        private System.Windows.Forms.Button SaveBT;
     }
 }

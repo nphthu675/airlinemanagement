@@ -16,9 +16,28 @@ namespace QLChuyenBay.DAO
         {
             SqlConnection Conn = new SqlConnection(DBConnectionString);
             Conn.Open();
+            if (CheckDuplicate(id_from, id_to, date) == true)
+            {
+                return false;
+            }
             string insert_string = "INSERT INTO CHUYENBAY(SBDen, SBDi, KhoiHanh) VALUES('" + id_to + "','" + id_from + "','" + date.ToString() + "')";
             SqlCommand insert_cmd = new SqlCommand(insert_string, Conn);
             insert_cmd.ExecuteNonQuery();
+            return true;
+        }
+
+        public bool CheckDuplicate(string id_from, string id_to, DateTime date)
+        {
+            SqlConnection Conn = new SqlConnection(DBConnectionString);
+            Conn.Open();
+            string select_string = string.Format("SELECT IDChuyenBay FROM CHUYENBAY CB WHERE CB.SBDen = '{0}' AND CB.SBDi = '{1}' AND CB.KhoiHanh = '{2}'", id_to, id_from, date);
+            SqlDataAdapter selectadapter = new SqlDataAdapter(select_string, Conn);
+            DataTable dt = new DataTable();
+            selectadapter.Fill(dt);
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                return false;
+            }
             return true;
         }
 
@@ -26,7 +45,18 @@ namespace QLChuyenBay.DAO
         {
             SqlConnection Conn = new SqlConnection(DBConnectionString);
             Conn.Open();
-            string select_string = "SELECT SBDen, SBDi, KhoiHanh FROM CHUYENBAY";
+            string select_string = "SELECT IDChuyenBay,SBDen, SBDi, KhoiHanh FROM CHUYENBAY";
+            SqlDataAdapter da = new SqlDataAdapter(select_string, Conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
+
+        public DataTable SearchFlight(string from, string to, string date)
+        {
+            SqlConnection Conn = new SqlConnection(DBConnectionString);
+            Conn.Open();
+            string select_string = string.Format("SELECT IDChuyenBay,SBDen, SBDi, KhoiHanh FROM CHUYENBAY WHERE SBDen = '{0}' AND SBDi = {1} AND KhoiHanh = '{2}", to, from, date);
             SqlDataAdapter da = new SqlDataAdapter(select_string, Conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -37,7 +67,7 @@ namespace QLChuyenBay.DAO
         {
             SqlConnection Conn = new SqlConnection(DBConnectionString);
             Conn.Open();
-            SqlCommand select_cmd = new SqlCommand("SELECT SBDen, SBDi, KhoiHanh FROM CHUYENBAY", Conn);
+            SqlCommand select_cmd = new SqlCommand("SELECT IDChuyenBay, SBDen, SBDi, KhoiHanh FROM CHUYENBAY", Conn);
             SqlDataAdapter da = new SqlDataAdapter(select_cmd);
             SqlCommandBuilder cb = new SqlCommandBuilder(da);
             int num_row_update = 0;
